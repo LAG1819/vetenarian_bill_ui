@@ -1,5 +1,5 @@
 import tkinter.filedialog
-from tkinter import ttk, Tk
+from tkinter import ttk, Tk, END
 
 import Excel as Excel
 import numpy as np
@@ -227,7 +227,7 @@ class GUI:
         ).grid(row=1, column=0)
         self.woende = ttk.Checkbutton(
             frame,
-            text="Wochen-1e (Sa,So)",
+            text="Wochenende (Sa,So)",
             width=20,
             var=self.tag,
             onvalue=2,
@@ -362,7 +362,7 @@ class GUI:
             frame_leistungen, medi, betrag, leistung, paragraph, tierart
         )
 
-        # b= ttk.Button(self.frame_leistungen, text="Datum", command= lambda: self.show_cal-1er(), width = 10).grid(sticky = W, row = self.row_leistugen, column = 6)
+        # b= ttk.Button(self.frame_leistungen, text="Datum", command= lambda: self.show_calender(), width = 10).grid(sticky = W, row = self.row_leistugen, column = 6)
         leistungsreihe = (
             nahrungsergänzungsmittel.grid(row=self.row_leistugen, column=2, pady=2),
             leistung.grid(column=3, row=self.row_leistugen, sticky="w", padx=2, pady=2),
@@ -372,7 +372,7 @@ class GUI:
             date_label.grid(sticky="w", column=0, row=self.row_leistugen, pady=2),
         )
 
-        date_label.delete(0, "-1")
+        date_label.delete(0, END)
         self.leistungen.app - 1(
             [
                 leistung,
@@ -409,8 +409,8 @@ class GUI:
     def paragraph_update_leistung(
         self, event, leistung: ttk.Combobox, betrag: ttk.Combobox
     ):
-        leistung.delete(0, -1)
-        betrag.delete(0, -1)
+        leistung.delete(0, END)
+        betrag.delete(0, END)
         selected = event.widget.get()
         found = self.got.loc[self.got["Paragraph"] == selected]["Leistung"]  # .values
         values = found.values  # .iloc[0])
@@ -427,8 +427,8 @@ class GUI:
         paragraph,
         tierart,
     ):
-        stufe.delete(0, -1)
-        betrag.delete(0, -1)
+        stufe.delete(0, END)
+        betrag.delete(0, END)
         leist = leistung.get()
         tier = tierart.get()
 
@@ -440,7 +440,7 @@ class GUI:
         print(isfound)
 
         if isfound.empty:
-            tierart.delete(0, -1)
+            tierart.delete(0, END)
             found = found["Tier"].values
             values = ["Alle" if v is np.NAN else v for v in found]
 
@@ -452,16 +452,16 @@ class GUI:
         else:
             tierart["values"] = isfound["Tier"].values()
             para = isfound["Paragraph"].iloc[0]
-            paragraph.delete(0, -1)
+            paragraph.delete(0, END)
             paragraph.insert(0, para)
 
     def reset_tierart(
         self, tierart, stufe, betrag, leistung, paragraph, event, mediEntry
     ):
-        stufe.delete(0, -1)
-        paragraph.delete(0, -1)
-        betrag.delete(0, -1)
-        mediEntry.delete(0, -1)
+        stufe.delete(0, END)
+        paragraph.delete(0, END)
+        betrag.delete(0, END)
+        mediEntry.delete(0, END)
 
         leist = leistung.get()
         found = self.got.loc[self.got["Leistung"] == leist]
@@ -493,8 +493,8 @@ class GUI:
     def stufe_update_preise(
         self, event, mediEntry, betragEntry, leistung, paragraph, tierart
     ):
-        mediEntry.delete(0, -1)
-        betragEntry.delete(0, -1)
+        mediEntry.delete(0, END)
+        betragEntry.delete(0, END)
 
         leist = leistung.get()
         selected = event.widget.get()
@@ -526,7 +526,7 @@ class GUI:
                 found = found[selected].values[0]
             else:
                 found = found[selected].values[0]
-            paragraph.delete(0, -1)
+            paragraph.delete(0, END)
             paragraph.insert(0, para)
 
         betragEntry.insert(0, str(found).replace(".", ","))
@@ -570,7 +570,7 @@ class GUI:
 
     def fillout_customer(self, event, box):
         print("Filling out:")
-        # box.delete(0,-1)
+        # box.delete(0,END)
         # box.insert(0, event.widget.get(ACTIVE))
         nachnameBox = False
         if box == self.nachname:
@@ -728,7 +728,7 @@ class GUI:
             b = 10.0
             tagParagraph = "3a"
         elif self.tag.get() == 2:
-            l = "Wochen-1e"
+            l = "Wochenende"
             b = 15.0
             tagParagraph = "3a"
         self.inputWerte_leistungen.app - 1([l, m, b, n, date, tierart, tiername])
@@ -794,9 +794,9 @@ class GUI:
             self.befundsliste.app - 1(self.befund.get())
 
         # delete Entrys in GUI
-        self.tiername.delete(0, -1)
-        self.tierart.delete(0, -1)
-        self.befund.delete(0, -1)
+        self.tiername.delete(0, END)
+        self.tierart.delete(0, END)
+        self.befund.delete(0, END)
         for l in self.labels:
             l.destroy()
         for box in self.boxes:
