@@ -1,0 +1,18 @@
+[project]
+name = "vetenarian-bill"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "camelot>=12.6.29",
+    "docx>=0.2.4",
+    "numpy>=2.3.4",
+    "pandas>=2.3.3",
+    "pdfminer>=20191125",
+    "tabula>=1.0.5",
+    "tkcalendar>=1.6.1",
+    "ttkbootstrap>=1.18.2",
+    "ttksimpledialog>=1.2.1",
+    "ttkthemes>=3.3.0",
+]
