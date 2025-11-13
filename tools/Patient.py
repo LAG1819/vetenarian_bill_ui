@@ -55,14 +55,14 @@ class Patientenliste:
             personVorname = person.getVorname()
             personNachname = person.getNachname()
             # personTier= person.tiername()
-        except Exception as e:
+        except Exception as _:
             exist = True
             return exist
         for p in self.patientenliste:
             anrede = p.getAnrede()
             vorname = p.getVorname()
             nachname = p.getNachname()
-            tiername = p.getTiername()
+            # tiername = p.getTiername()
 
             if (
                 (personAnrede == anrede)
